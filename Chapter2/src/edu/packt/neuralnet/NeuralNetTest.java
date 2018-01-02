@@ -7,91 +7,94 @@ import edu.packt.neuralnet.learn.Training.TrainingTypesENUM;
 
 public class NeuralNetTest {
 
-	public static void main(String[] args) {
-		NeuralNetTest test = new NeuralNetTest();
-		
-		test.testPerceptron();
-		
-		test.testAdaline();
-	}
+    public static void main(String[] args) {
+        NeuralNetTest test = new NeuralNetTest();
 
-	private void testPerceptron() {
-		NeuralNet testNet = new NeuralNet();
+        test.testPerceptron();
 
-		testNet = testNet.initNet(2, 0, 0, 1);
+        test.testAdaline();
+    }
 
-		System.out.println("---------PERCEPTRON INIT NET---------");
+    private void testPerceptron() {
+        NeuralNet testNet = new NeuralNet();
 
-		testNet.printNet(testNet);
+        testNet = testNet.initNet(2,
+                                  0,
+                                  0,
+                                  1);
 
-		NeuralNet trainedNet = new NeuralNet();
+        System.out.println("---------PERCEPTRON INIT NET---------");
 
-		// first column has BIAS
-		testNet.setTrainSet(new double[][] { { 1.0, 0.0, 0.0 },
-				{ 1.0, 0.0, 1.0 }, { 1.0, 1.0, 0.0 }, { 1.0, 1.0, 1.0 } });
-		testNet.setRealOutputSet(new double[] { 0.0, 0.0, 0.0, 1.0 });
-		testNet.setMaxEpochs(10);
-		testNet.setTargetError(0.002);
-		testNet.setLearningRate(1.0);
-		testNet.setTrainType(TrainingTypesENUM.PERCEPTRON);
-		testNet.setActivationFnc(ActivationFncENUM.STEP);
+        testNet.printNet(testNet);
 
-		trainedNet = testNet.trainNet(testNet);
+        NeuralNet trainedNet = new NeuralNet();
 
-		System.out.println();
-		System.out.println("---------PERCEPTRON TRAINED NET---------");
+        // first column has BIAS
+        testNet.setTrainSet(new double[][] {{1.0, 0.0, 0.0}, {1.0, 0.0, 1.0}, {1.0, 1.0, 0.0}, {1.0, 1.0, 1.0}});
+        testNet.setRealOutputSet(new double[] {0.0, 0.0, 0.0, 1.0});
+        testNet.setMaxEpochs(10);// 最大训练次数
+        testNet.setTargetError(0.002);// 目标误差
+        testNet.setLearningRate(1.0);// 学习率
+        testNet.setTrainType(TrainingTypesENUM.PERCEPTRON);// 感知器
+        testNet.setActivationFnc(ActivationFncENUM.STEP);// 激活函数
 
-		testNet.printNet(trainedNet);
+        trainedNet = testNet.trainNet(testNet);
 
-		System.out.println();
-		System.out.println("---------PERCEPTRON PRINT RESULT---------");
+        System.out.println();
+        System.out.println("---------PERCEPTRON TRAINED NET---------");
 
-		testNet.printTrainedNetResult(trainedNet);
-	}
+        testNet.printNet(trainedNet);
 
-	private void testAdaline() {
+        System.out.println();
+        System.out.println("---------PERCEPTRON PRINT RESULT---------");
 
-		NeuralNet testNet = new NeuralNet();
+        testNet.printTrainedNetResult(trainedNet);
+    }
 
-		testNet = testNet.initNet(3, 0, 0, 1);
+    private void testAdaline() {
 
-		System.out.println("---------ADALINE INIT NET---------");
+        NeuralNet testNet = new NeuralNet();
 
-		testNet.printNet(testNet);
-		
-		NeuralNet trainedNet = new NeuralNet();
+        testNet = testNet.initNet(3,
+                                  0,
+                                  0,
+                                  1);
 
-		// first column has BIAS
-		testNet.setTrainSet(new double[][] { { 1.0, 0.98, 0.94, 0.95 },
-				{ 1.0, 0.60, 0.60, 0.85 }, { 1.0, 0.35, 0.15, 0.15 },
-				{ 1.0, 0.25, 0.30, 0.98 }, { 1.0, 0.75, 0.85, 0.91 },
-				{ 1.0, 0.43, 0.57, 0.87 }, { 1.0, 0.05, 0.06, 0.01 } });
-		testNet.setRealOutputSet(new double[] { 0.80, 0.59, 0.23, 0.45, 0.74,
-				0.63, 0.10 });
-		testNet.setMaxEpochs(10);
-		testNet.setTargetError(0.0001);
-		testNet.setLearningRate(0.5);
-		testNet.setTrainType(TrainingTypesENUM.ADALINE);
-		testNet.setActivationFnc(ActivationFncENUM.LINEAR);
+        System.out.println("---------ADALINE INIT NET---------");
 
-		trainedNet = new NeuralNet();
-		trainedNet = testNet.trainNet(testNet);
+        testNet.printNet(testNet);
 
-		System.out.println();
-		System.out.println("---------ADALINE TRAINED NET---------");
+        NeuralNet trainedNet = new NeuralNet();
 
-		testNet.printNet(trainedNet);
+        // first column has BIAS
+        testNet.setTrainSet(new double[][] {{1.0, 0.98, 0.94, 0.95}, {1.0, 0.60, 0.60, 0.85}, {1.0, 0.35, 0.15, 0.15}, {1.0, 0.25, 0.30, 0.98}, {1.0, 0.75, 0.85, 0.91}, {1.0, 0.43, 0.57, 0.87}, {1.0, 0.05, 0.06, 0.01}});
+        testNet.setRealOutputSet(new double[] {0.80, 0.59, 0.23, 0.45, 0.74, 0.63, 0.10});
+        testNet.setMaxEpochs(10);
+        testNet.setTargetError(0.0001);
+        testNet.setLearningRate(0.5);
+        testNet.setTrainType(TrainingTypesENUM.ADALINE);
+        testNet.setActivationFnc(ActivationFncENUM.LINEAR);
 
-		System.out.println();
-		System.out.println("---------ADALINE PRINT RESULT---------");
+        trainedNet = new NeuralNet();
+        trainedNet = testNet.trainNet(testNet);
 
-		testNet.printTrainedNetResult(trainedNet);
-		
-		System.out.println();
-		System.out.println("---------ADALINE MSE BY EPOCH---------");
-		System.out.println( Arrays.deepToString( trainedNet.getListOfMSE().toArray() ).replace(" ", "\n") );
-		
+        System.out.println();
+        System.out.println("---------ADALINE TRAINED NET---------");
 
-	}
-	
+        testNet.printNet(trainedNet);
+
+        System.out.println();
+        System.out.println("---------ADALINE PRINT RESULT---------");
+
+        testNet.printTrainedNetResult(trainedNet);
+
+        System.out.println();
+        System.out.println("---------ADALINE MSE BY EPOCH---------");
+        System.out.println(Arrays.deepToString(trainedNet.getListOfMSE()
+                                                         .toArray())
+                                 .replace(" ",
+                                          "\n"));
+
+    }
+
 }
