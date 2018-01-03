@@ -6,6 +6,15 @@ import edu.packt.neuralnet.InputLayer;
 import edu.packt.neuralnet.NeuralNet;
 import edu.packt.neuralnet.Neuron;
 
+/**
+ * ClassName: Training <br/>
+ * Function: <br/>
+ * date: 2018年1月3日 下午9:20:03 <br/>
+ *
+ * @author xushjie
+ * @version
+ * @since JDK 1.8
+ */
 public abstract class Training {
 
     private int    epochs;
@@ -17,6 +26,14 @@ public abstract class Training {
         ADALINE;
     }
 
+    /**
+     * train: <br/>
+     *
+     * @author xushjie
+     * @param n
+     * @return
+     * @since JDK 1.8
+     */
     public NeuralNet train(NeuralNet n) {
 
         ArrayList<Double> inputWeightIn = new ArrayList<Double>();
@@ -76,6 +93,17 @@ public abstract class Training {
         return n;
     }
 
+    /**
+     * teachNeuronsOfLayer: <br/>
+     *
+     * @author xushjie
+     * @param numberOfInputNeurons
+     * @param line
+     * @param n
+     * @param netValue
+     * @return
+     * @since JDK 1.8
+     */
     private ArrayList<Neuron> teachNeuronsOfLayer(int numberOfInputNeurons,
                                                   int line,
                                                   NeuralNet n,
@@ -108,6 +136,19 @@ public abstract class Training {
 
     }
 
+    /**
+     * calcNewWeight: <br/>
+     *
+     * @author xushjie
+     * @param trainType
+     * @param inputWeightOld
+     * @param n
+     * @param error
+     * @param trainSample
+     * @param netValue
+     * @return
+     * @since JDK 1.8
+     */
     private double calcNewWeight(TrainingTypesENUM trainType,
                                  double inputWeightOld,
                                  NeuralNet n,
@@ -125,6 +166,15 @@ public abstract class Training {
         }
     }
 
+    /**
+     * ClassName: ActivationFncENUM <br/>
+     * Function: <br/>
+     * date: 2018年1月3日 下午9:52:13 <br/>
+     *
+     * @author xushjie
+     * @version Training
+     * @since JDK 1.8
+     */
     public enum ActivationFncENUM {
         STEP,
         LINEAR,
@@ -132,6 +182,15 @@ public abstract class Training {
         HYPERTAN;
     }
 
+    /**
+     * activationFnc: <br/>
+     *
+     * @author xushjie
+     * @param fnc
+     * @param value
+     * @return
+     * @since JDK 1.8
+     */
     private double activationFnc(ActivationFncENUM fnc,
                                  double value) {
         switch (fnc) {
@@ -148,6 +207,15 @@ public abstract class Training {
         }
     }
 
+    /**
+     * derivativeActivationFnc: <br/>
+     *
+     * @author xushjie
+     * @param fnc
+     * @param value
+     * @return
+     * @since JDK 1.8
+     */
     public double derivativeActivationFnc(ActivationFncENUM fnc,
                                           double value) {
         switch (fnc) {
@@ -162,6 +230,14 @@ public abstract class Training {
         }
     }
 
+    /**
+     * fncStep: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double fncStep(double v) {
         if (v >= 0) {
             return 1.0;
@@ -170,31 +246,86 @@ public abstract class Training {
         }
     }
 
+    /**
+     * fncLinear: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double fncLinear(double v) {
         return v;
     }
 
+    /**
+     * fncSigLog: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double fncSigLog(double v) {
         return 1.0 / (1.0 + Math.exp(-v));
     }
 
+    /**
+     * fncHyperTan: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double fncHyperTan(double v) {
         return Math.tanh(v);
     }
 
+    /**
+     * derivativeFncLinear: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double derivativeFncLinear(double v) {
         return 1.0;
     }
 
+    /**
+     * derivativeFncSigLog: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double derivativeFncSigLog(double v) {
         return v * (1.0 - v);
     }
 
+    /**
+     * derivativeFncHyperTan: <br/>
+     *
+     * @author xushjie
+     * @param v
+     * @return
+     * @since JDK 1.8
+     */
     private double derivativeFncHyperTan(double v) {
         return (1.0 / Math.pow(Math.cosh(v),
                                2.0));
     }
 
+    /**
+     * printTrainedNetResult: <br/>
+     *
+     * @author xushjie
+     * @param trainedNet
+     * @since JDK 1.8
+     */
     public void printTrainedNetResult(NeuralNet trainedNet) {
 
         int rows = trainedNet.getTrainSet().length;

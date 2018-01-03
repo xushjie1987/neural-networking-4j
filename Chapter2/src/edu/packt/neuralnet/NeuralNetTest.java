@@ -5,8 +5,24 @@ import java.util.Arrays;
 import edu.packt.neuralnet.learn.Training.ActivationFncENUM;
 import edu.packt.neuralnet.learn.Training.TrainingTypesENUM;
 
+/**
+ * ClassName: NeuralNetTest <br/>
+ * Function: <br/>
+ * date: 2018年1月3日 下午9:17:33 <br/>
+ *
+ * @author xushjie
+ * @version
+ * @since JDK 1.8
+ */
 public class NeuralNetTest {
 
+    /**
+     * main: <br/>
+     * 
+     * @author xushjie
+     * @param args
+     * @since JDK 1.8
+     */
     public static void main(String[] args) {
         NeuralNetTest test = new NeuralNetTest();
 
@@ -15,6 +31,12 @@ public class NeuralNetTest {
         test.testAdaline();
     }
 
+    /**
+     * testPerceptron: <br/>
+     *
+     * @author xushjie
+     * @since JDK 1.8
+     */
     private void testPerceptron() {
         NeuralNet testNet = new NeuralNet();
 
@@ -51,6 +73,12 @@ public class NeuralNetTest {
         testNet.printTrainedNetResult(trainedNet);
     }
 
+    /**
+     * testAdaline: <br/>
+     *
+     * @author xushjie
+     * @since JDK 1.8
+     */
     private void testAdaline() {
 
         NeuralNet testNet = new NeuralNet();

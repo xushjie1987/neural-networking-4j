@@ -7,6 +7,15 @@ import edu.packt.neuralnet.learn.Perceptron;
 import edu.packt.neuralnet.learn.Training.ActivationFncENUM;
 import edu.packt.neuralnet.learn.Training.TrainingTypesENUM;
 
+/**
+ * ClassName: NeuralNet <br/>
+ * Function: <br/>
+ * date: 2018年1月3日 下午9:16:34 <br/>
+ *
+ * @author xushjie
+ * @version
+ * @since JDK 1.8
+ */
 public class NeuralNet {
 
     private InputLayer             inputLayer;
@@ -26,6 +35,17 @@ public class NeuralNet {
     private ActivationFncENUM      activationFnc;
     private TrainingTypesENUM      trainType;
 
+    /**
+     * initNet: <br/>
+     * 
+     * @author xushjie
+     * @param numberOfInputNeurons
+     * @param numberOfHiddenLayers
+     * @param numberOfNeuronsInHiddenLayer
+     * @param numberOfOutputNeurons
+     * @return
+     * @since JDK 1.8
+     */
     public NeuralNet initNet(int numberOfInputNeurons,
                              int numberOfHiddenLayers,
                              int numberOfNeuronsInHiddenLayer,
@@ -75,6 +95,14 @@ public class NeuralNet {
     }
 
     // NEW
+    /**
+     * trainNet: <br/>
+     * 
+     * @author xushjie
+     * @param n
+     * @return
+     * @since JDK 1.8
+     */
     public NeuralNet trainNet(NeuralNet n) {
 
         NeuralNet trainedNet = new NeuralNet();
@@ -94,6 +122,13 @@ public class NeuralNet {
 
     }
 
+    /**
+     * printTrainedNetResult: <br/>
+     * 
+     * @author xushjie
+     * @param n
+     * @since JDK 1.8
+     */
     public void printTrainedNetResult(NeuralNet n) {
         switch (n.trainType) {
             case PERCEPTRON:
