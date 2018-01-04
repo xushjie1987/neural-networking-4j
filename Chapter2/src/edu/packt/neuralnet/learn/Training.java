@@ -21,6 +21,15 @@ public abstract class Training {
     private double error;
     private double mse;
 
+    /**
+     * ClassName: TrainingTypesENUM <br/>
+     * Function: <br/>
+     * date: 2018年1月4日 下午10:19:32 <br/>
+     *
+     * @author xushjie
+     * @version Training
+     * @since JDK 1.8
+     */
     public enum TrainingTypesENUM {
         PERCEPTRON,
         ADALINE;
